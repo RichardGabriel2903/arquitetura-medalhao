@@ -1,0 +1,10 @@
+# Ignorar ambiente virtual e cache do Python
+.venv/
+__pycache__/
+*.pyc
+
+# Ignorar configurações do editor
+.vscode/
+
+# Ignorar arquivos compilados ou temporários
+db.cpython-314.pyc

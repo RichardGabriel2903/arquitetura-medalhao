@@ -30,7 +30,7 @@ class NormalizeData:
         
         for file in os.listdir(self.input_dir):
             name, ext = os.path.splitext(file)
-            output_path = os.path.join(self.output_dir, file)
+            output_path = os.path.join(self.output_dir, f'{name}.parquet')
                         
             
             df = self.load_df_from_file(file, ext)
