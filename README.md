@@ -1,64 +1,68 @@
-🚀 Pipeline ETL com Arquitetura Medalhão: De Dados Brutos a Insights Reais
-Este projeto foi desenvolvido como um desafio prático de Engenharia de Dados, focado na implementação da Arquitetura Medalhão para transformar dados crus em uma visão analítica consolidada. Indo além do conteúdo básico do curso, implementei rotinas de Data Quality, normalização de dados e análise exploratória.
+# 🚀 Pipeline ETL com Arquitetura Medalhão
 
-🏗️ A Arquitetura e o Fluxo de Dados
-O pipeline segue a separação lógica de responsabilidades para garantir escalabilidade e confiança no dado:
+Este projeto foi desenvolvido como um desafio prático de Engenharia de Dados, focado na implementação da **Arquitetura Medalhão** para transformar dados crus em uma visão analítica consolidada. Indo além do básico, implementei rotinas de **Data Quality**, normalização e análise exploratória.
 
-Camada Bronze (Raw): Armazenamento fiel dos dados brutos recebidos em formatos heterogêneos (CSV, JSON).
+---
 
-Camada Silver (Validated): Processo de limpeza e conversão. Aqui, os dados foram tipados e salvos em formato Parquet, otimizando o armazenamento e a performance de leitura.
+## 🏗️ A Arquitetura e o Fluxo de Dados
 
-Camada Gold (Enriched): Camada de consumo onde realizei o Inner Join entre Usuários e Localização (CEP), criando uma visão de negócio pronta para BI.
+O pipeline segue a separação lógica de responsabilidades:
 
-🛠️ Tecnologias e Ferramentas
-Linguagem: Python 3.x
+* **Camada Bronze (Raw):** Armazenamento fiel dos dados brutos recebidos (`CSV`, `JSON`).
+* **Camada Silver (Validated):** Processo de limpeza e conversão para formato **Parquet**, otimizando performance.
+* **Camada Gold (Enriched):** Camada de consumo com **Inner Join** entre Usuários e Localização (CEP), gerando uma visão pronta para BI.
 
-Processamento de Dados: Pandas
+---
 
-Armazenamento: Parquet (Formatos colunares)
+## 🛠️ Tecnologias e Ferramentas
 
-Banco de Dados: PostgreSQL (via Docker)
+* **Linguagem:** Python 3.x
+* **Processamento:** Pandas
+* **Armazenamento:** Parquet (Formatos colunares)
+* **Banco de Dados:** PostgreSQL (Docker)
+* **Visualização:** Matplotlib & Seaborn
+* **Ambiente:** Jupyter Notebooks & VS Code
 
-Visualização: Matplotlib & Seaborn
+---
 
-Ambiente: Jupyter Notebooks & VS Code
+## 💡 Meus Diferenciais (Data Quality)
 
-💡 Meus Diferenciais (O que adicionei ao projeto)
-Para elevar o nível técnico da entrega, implementei as seguintes melhorias:
+Para elevar o nível técnico, implementei:
 
-Normalização de Gênero: Identifiquei e corrigi inconsistências de strings (ex: "F " vs "F") que causavam duplicidade em análises estatísticas.
+* **Normalização de Gênero:** Correção de strings (ex: "F " vs "F") para evitar duplicidade.
+* **Ordenação Numérica:** Uso de `CAST` de IDs para ordenação correta na Gold.
+* **Data Visualization:** Dashboard completo no `data-view.ipynb`.
+* **Boas Práticas:** `.gitignore` profissional e `requirements.txt`.
 
-Ordenação Numérica: Corrigi a lógica de ordenação da Query Gold, realizando o CAST de IDs que estavam em formato string para Integer.
+---
 
-Data Visualization: Desenvolvi um Dashboard no data-view.ipynb para analisar a distribuição de usuários por UF, Gênero e Ano de Nascimento.
+## 🚀 Como Rodar o Projeto
 
-Boas Práticas de DevOps: Configuração de .gitignore profissional e gerenciamento de dependências via requirements.txt.
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+   cd seu-repositorio
 
-🚀 Como Rodar o Projeto
-Clone o repositório:
+2. **Crie e ative seu ambiente virtual:**
+   ```bash
+   python -m venv .venv
+    # Windows:
+    .venv\Scripts\activate
+    # Linux/Mac:
+    source .venv/bin/activate
 
-Bash
+3. **Instale as dependências:**
+   ```bash
+   pip install -r requirements.txt
 
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
-Crie e ative seu ambiente virtual:
+4. **Suba o banco e rode o pipeline:**
+    ```bash
+    docker-compose up -d
+    python populate_db.py
+    python normalize_data.py
 
-Bash
+---
 
-python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-.venv\Scripts\activate     # Windows
-Instale as dependências:
+## 📈 Próximos Passos
 
-Bash
-
-pip install -r requirements.txt
-Suba o banco de dados e rode o pipeline:
-
-Bash
-
-docker-compose up -d
-python populate_db.py
-python normalize_data.py
-📈 Próximos Passos
-Pretendo expandir este projeto integrando o arquivo products.json para criar uma Tabela Fato de Vendas, permitindo analisar o ticket médio por região.
+Pretendo integrar o arquivo products.json para criar uma Tabela Fato de Vendas, permitindo analisar o ticket médio por região.
